@@ -4,12 +4,12 @@
     padding: 0;
 }
 .container {
-    background-color: aquamarine;
+    background-color: rgb(17, 185, 252);
     height: 100vh;
 }
 .about-weather {
     display: flex;
-    gap: 10px;
+    gap: 5px;
 }
 header {
     width: 100%;
@@ -17,28 +17,38 @@ header {
     background-color: blueviolet;
 }
 .status {
-    background-color: azure;
+    margin: 20px 0px 0px 20px;
     width: 50vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .details {
-    background-color: azure;
+    margin: 20px 20px 0px 0px;
     width: 50vw;
 }
 
 .datd {
     height: 50px;
-    background-color: brown;
+    color: white;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
     margin: 10px;
 }
 
 .temp {
     height: 200px;
-    background-color: brown;
     margin: 10px;
     display: flex;
     padding: 10px;
@@ -46,12 +56,13 @@ header {
 }
 
 .area {
-    background-color: aqua;
-    flex-grow: 1;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    transform: translateY(-50px);
 }
 
 .sel {
-    background-color: aqua;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -61,16 +72,62 @@ header {
 
 .deg {
     flex-grow: 1;
-    background-color: bisque;
+    font-size: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.feel-like {
+.feel-like-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-grow: 1;
-    background-color: bisque;
+    gap: 10px;
+}
+
+span {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .about {
     height: 200px;
-    background-color: brown;
     margin: 10px;
+}
+
+.p-status {
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+    transform: translatex(20px);
+    animation: moved 5s infinite;
+}
+
+@keyframes moved {
+    0% {
+        transform: translatex(20px);
+    }
+    50% {
+        transform: translatex(-20px);
+    }
+    100% {
+        transform: translatex(20px);
+    }
+}
+@keyframes moved-down {
+    0% {
+        transform: translatey(20px);
+    }
+    50% {
+        transform: translatey(-20px);
+    }
+    100% {
+        transform: translatey(20px);
+    }
 }
