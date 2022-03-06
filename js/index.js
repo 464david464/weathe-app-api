@@ -11,7 +11,7 @@ let requestOptions = {
 };
 
 fetch(
-  "https://api.openweathermap.org/data/2.5/weather?q=חרקוב&lang=he&units=metric&appid=9ac9607796efff4f0762a85bc43efa57",
+  "https://api.openweathermap.org/data/2.5/weather?q=ביתר+עילית&lang=he&units=metric&appid=9ac9607796efff4f0762a85bc43efa57",
   requestOptions
 )
   .then((response) => response.json())
