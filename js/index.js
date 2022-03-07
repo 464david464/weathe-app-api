@@ -12,7 +12,11 @@ let requestOptions = {
 };
 
 fetch(
+<<<<<<< HEAD
   "https://api.openweathermap.org/data/2.5/weather?q=" + input.value + "&lang=he&units=metric&appid=9ac9607796efff4f0762a85bc43efa57",
+=======
+  "https://api.openweathermap.org/data/2.5/weather?q=ביתר+עילית&lang=he&units=metric&appid=9ac9607796efff4f0762a85bc43efa57",
+>>>>>>> 705144314bbffd8b295a0805c319ae012a39c1a6
   requestOptions
 )
   .then((response) => response.json())
