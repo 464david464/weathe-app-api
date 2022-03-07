@@ -1,8 +1,9 @@
-let d = new Date();
-console.log(d.getTime());
-let renderDTIme = document.querySelector(".datd");
 
-let myHeaders = new Headers();
+let input = document.querySelector('input');
+
+function search() {
+
+  let myHeaders = new Headers();
 
 let requestOptions = {
   method: "GET",
@@ -11,7 +12,7 @@ let requestOptions = {
 };
 
 fetch(
-  "https://api.openweathermap.org/data/2.5/weather?q=חרקוב&lang=he&units=metric&appid=9ac9607796efff4f0762a85bc43efa57",
+  "https://api.openweathermap.org/data/2.5/weather?q=" + input.value + "&lang=he&units=metric&appid=9ac9607796efff4f0762a85bc43efa57",
   requestOptions
 )
   .then((response) => response.json())
@@ -26,34 +27,30 @@ fetch(
   )
   .catch((error) => console.log("error", error));
 
-function getWeatherDetails(temp, city, icon, escription, feelsLike) {
-  let ststusImg = document.querySelector("img");
-  let statusOfWeather = document.querySelector(".p-status");
-  let area = document.querySelector(".area");
-  let deg = document.querySelector(".deg");
-  let about = document.querySelector(".feel-like");
-  let aboutText = document.querySelector(".feel-like-text");
+  function getWeatherDetails(temp, city, icon, escription, feelsLike) {
+    let ststusImg = document.querySelector("img");
+    let statusOfWeather = document.querySelector(".p-status");
+    let area = document.querySelector(".area");
+    let deg = document.querySelector(".deg");
+    let about = document.querySelector(".feel-like");
+    let aboutText = document.querySelector(".feel-like-text");
+  
+    deg.innerText = temp;
+    area.innerText = city;
+    ststusImg.src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+    statusOfWeather.innerText = escription;
+    about.innerText = parseInt(feelsLike) + '°';
+    aboutText.innerText = 'מרגיש כמו'
+  
+  }
 
-  deg.innerText = temp;
-  area.innerText = city;
-  ststusImg.src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-  statusOfWeather.innerText = escription;
-  about.innerText = parseInt(feelsLike) + '°';
-  aboutText.innerText = 'מרגיש כמו'
-
+  console.log(input.value)
 }
 
-let myListHeaders = new Headers();
+document.querySelector('button').addEventListener('click', search)
 
-let requestOptionsList = {
-  method: "GET",
-  headers: myListHeaders,
-  redirect: "follow",
-};
-
-fetch("../json/city.list.json", requestOptionsList)
-  .then((response) => response.json())
-  .then((result) => console.log(result))
-  .catch((error) => console.log("error", error));
-
-function sityList(nameOfTheCity) {}
+document.addEventListener('keypress', (event) => {
+  if(event.key == 'Enter') {
+    search()
+  }
+})
