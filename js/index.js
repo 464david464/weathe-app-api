@@ -1,7 +1,13 @@
+let input = document.querySelector("input");
+
+
 function clock() {
   let d = new Date();
   let hh = d.getHours();
   let mm = d.getMinutes();
+  if(mm < 10) {
+    mm = '0' + mm
+  }
   document.querySelector('.date').innerText = hh + ':' + mm
 
 setInterval(() => {
@@ -15,7 +21,7 @@ setInterval(() => {
   }
 
 
-  if(hh > 24) {
+  if(hh > 23) {
     hh = 0
   }
   document.querySelector('.date').innerText = hh + ':' + mm
@@ -23,9 +29,9 @@ setInterval(() => {
 }
 clock()
 
-let input = document.querySelector("input");
 
-function search() {
+
+function search(location) {
   let myHeaders = new Headers();
 
   let requestOptions = {
@@ -36,14 +42,14 @@ function search() {
 
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=" +
-      input.value +
+      location +
       "&lang=he&units=metric&appid=9ac9607796efff4f0762a85bc43efa57",
 
     requestOptions
   )
     .then((response) => response.json())
-    .then((result) =>
-      getWeatherDetails(
+    .then((result) => {
+        getWeatherDetails(
         result.main.temp,
         result.name,
         result.weather[0].icon,
@@ -52,6 +58,8 @@ function search() {
         result.main.temp_min,
         result.main.temp_max
       )
+          
+    }
     )
     .catch((error) => console.log("error", error));
 
@@ -80,16 +88,25 @@ function search() {
     aboutText.innerText = "מרגיש כמו";
     from.innerText = parseInt(fromtemp) + "° /";
     to.innerText = parseInt(totemp) + "°";
-  }
 
-  console.log(input.value);
+    localStorage.setItem('place', city)
+  localStorage.setItem('searched', 'true')
+  }
+  
+
+}
+
+if(localStorage.getItem('searched') == 'true') {
+  document.querySelector(".with-search").style.display = "flex";
+  document.querySelector(".without-search").style.display = "none";
+  search(localStorage.getItem('place'))
 }
 
 document.querySelector("button").addEventListener("click", () => {
   if (input.value != "") {
     document.querySelector(".with-search").style.display = "flex";
     document.querySelector(".without-search").style.display = "none";
-    search();
+    search(input.value);
     input.value = "";
   }
 });
@@ -99,7 +116,7 @@ document.addEventListener("keypress", (event) => {
     if (input.value != "") {
       document.querySelector(".with-search").style.display = "flex";
       document.querySelector(".without-search").style.display = "none";
-      search();
+      search(input.value);
       input.value = "";
     }
   }
