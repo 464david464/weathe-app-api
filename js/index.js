@@ -54,13 +54,23 @@ fetch(
 }
 
 document.querySelector('button').addEventListener('click', () => {
+if(input.value != '') {
+  document.querySelector('.with-search').style.display = 'flex'
+  document.querySelector('.without-search').style.display = 'none'
   search()
   input.value ='';
+}
+  
 })
 
 document.addEventListener('keypress', (event) => {
   if(event.key == 'Enter') {
-    search()
-    input.value = '';
+    if(input.value != '') {
+      document.querySelector('.with-search').style.display = 'flex'
+      document.querySelector('.without-search').style.display = 'none'
+      search()
+      input.value = '';
+    }
+   
   }
 })
