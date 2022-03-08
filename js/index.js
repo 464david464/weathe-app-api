@@ -24,35 +24,43 @@ fetch(
       result.name,
       result.weather[0].icon,
       result.weather[0].description,
-      result.main.feels_like
+      result.main.feels_like,
+      result.main.temp_min,
+      result.main.temp_max
     )
   )
   .catch((error) => console.log("error", error));
 
-  function getWeatherDetails(temp, city, icon, escription, feelsLike) {
+  function getWeatherDetails(temp, city, icon, escription, feelsLike, fromtemp, totemp) {
     let ststusImg = document.querySelector("img");
     let statusOfWeather = document.querySelector(".p-status");
     let area = document.querySelector(".area");
     let deg = document.querySelector(".deg");
     let about = document.querySelector(".feel-like");
     let aboutText = document.querySelector(".feel-like-text");
-  
+    let from = document.querySelector('.from');
+    let to = document.querySelector('.to');
     deg.innerText = temp;
     area.innerText = city;
     ststusImg.src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
     statusOfWeather.innerText = escription;
     about.innerText = parseInt(feelsLike) + '°';
     aboutText.innerText = 'מרגיש כמו'
-  
+    from.innerText = parseInt(fromtemp) + "° /"
+    to.innerText = parseInt(totemp) + "°"
   }
 
   console.log(input.value)
 }
 
-document.querySelector('button').addEventListener('click', search)
+document.querySelector('button').addEventListener('click', () => {
+  search()
+  input.value ='';
+})
 
 document.addEventListener('keypress', (event) => {
   if(event.key == 'Enter') {
     search()
+    input.value = '';
   }
 })

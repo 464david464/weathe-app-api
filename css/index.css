@@ -4,17 +4,21 @@
     padding: 0;
 }
 .container {
-    background-color: rgb(17, 185, 252);
+    /* background-color: rgb(17, 185, 252); */
+    background-image: linear-gradient(rgb(145, 76, 190),rgb(17, 185, 252));
     height: 100vh;
 }
 .about-weather {
     display: flex;
-    gap: 5px;
+    margin: 20px 20px 20px 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 header {
     width: 100%;
     height: 50px;
-    background-color: rgb(134, 63, 214);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +29,7 @@ input {
     backdrop-filter: blur(5px);
     background-color: rgba(255, 255, 255, 0.253);
     color: white;
-    width: 200px;
+    width: 250px;
     height: 20px;
     padding: 5px;
     outline: none;
@@ -61,7 +65,7 @@ button {
     border-radius: 5px;
 }
 button:hover {
-    color: rgb(187, 241, 255);
+    color: rgb(243, 184, 255);
     background-color: rgba(255, 255, 255, 0.158);
     box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.123);
 }
@@ -77,10 +81,6 @@ button:active {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 20px;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .details {
@@ -150,6 +150,11 @@ span {
 .about {
     height: 200px;
     margin: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .p-status {
